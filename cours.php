@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Apprenez les langages de programmation et de conception avec L'Ochy Academy. Rejoignez des cours sur PHP, Java, HTML, et plus !">
+    <title>Tableau de bord des cours - L'Ochy Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Variables CSS */
+        :root {
+            --primary-color: #4a90e2; /* Bleu principal */
+            --secondary-color: #ff6f61; /* Corail */
+            --accent-color: #4a90e2; /* Bleu (remplace le jaune) */
+            --text-color: #2d2d2d; /* Texte sombre */
+            --light-text: #ffffff; /* Texte clair */
+            --background-light: #f9f9f9; /* Fond clair */
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Ombre */
+            --transition: all 0.3s ease; /* Transition */
+        }
+
+        /* Styles généraux */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-light);
+            color: var(--text-color);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            margin: 0;
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Navbar */
+        header {
+            background-color: var(--light-text);
+            box-shadow: var(--shadow);
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .navbar h1 {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .navbar h1 span {
+            color: var(--secondary-color);
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Tabs */
+        aside {
+            background-color: var(--accent-color); /* Bleu */
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .tabs {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .tabs a {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--light-text); /* Texte clair sur fond bleu */
+            transition: var(--transition);
+        }
+
+        .tabs a:hover,
+        .tabs a.active {
+            border-bottom: 2px solid var(--secondary-color); /* Corail */
+        }
+
+        /* Search Bar */
+        .search-bar {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .search-bar input {
+            padding: 12px 20px;
+            font-size: 1rem;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 50px;
+            border: 2px solid var(--accent-color); /* Bleu */
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .search-bar input:focus {
+            border-color: var(--secondary-color); /* Corail */
+            box-shadow: 0 0 10px rgba(255, 111, 97, 0.5);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        /* Category */
+        .category {
+            margin-bottom: 50px;
+        }
+
+        .category h2 {
+            font-size: 2rem;
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+
+        .category p {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        /* Course Card */
+        .course-card {
+            display: inline-block;
+            width: 250px;
+            margin: 15px;
+            padding: 20px;
+            background-color: var(--light-text);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .course-card img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 15px;
+        }
+
+        .course-card h4 {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+
+        .course-card p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .start-button {
+            background-color: var(--secondary-color); /* Corail */
+            color: var(--light-text);
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: var(--transition);
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .start-button:hover {
+            background-color: var(--accent-color); /* Bleu */
+            transform: scale(1.05);
+        }
+
+        .progress-container {
+            background-color: #e0e0e0;
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+
+        .progress-bar {
+            background-color: var(--secondary-color); /* Corail */
+            width: 0%;
+            height: 100%;
+            border-radius: 5px;
+        }
+
+        .rating {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .rating span {
+            color: var(--accent-color); /* Bleu */
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background-color: var(--primary-color); /* Bleu */
+            padding: 30px;
+            margin-top: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .testimonials h3 {
+            font-size: 1.5rem;
+            color: var(--light-text);
+            margin-bottom: 20px;
+        }
+
+        .testimonials blockquote {
+            font-style: italic;
+            font-size: 1rem;
+            color: var(--light-text);
+            margin-bottom: 10px;
+        }
+
+        /* Featured Courses */
+        .featured-courses {
+            background-color: var(--light-text);
+            padding: 30px;
+            margin-top: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .featured-courses h2 {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            margin-bottom: 20px;
+        }
+
+        .badge {
+            background-color: var(--secondary-color); /* Corail */
+            padding: 5px 10px;
+            border-radius: 20px;
+            color: var(--light-text);
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .tabs {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .course-card {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .search-bar input {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="navbar">
+        <h1><span>L'</span>Ochy Academy</h1>
+        <nav>
+            <a href="index.php" class="active">Accueil</a>
+            <a href="quiz.php">Quiz</a>
+            <a href="cour.php">Cours PDF/Exercices</a>
+            <a href="blog.php">Blog</a>
+            <a href="formation.php">Formation</a>
+            <a href="#">À propos</a>
+        </nav>
+    </div>
+</header>
+
+<aside>
+    <ul class="tabs">
+        <li><a href="#programming" class="active">Langages de programmation</a></li>
+        <li><a href="#design">Langages de conception</a></li>
+        <li><a href="#frameworks">Frameworks</a></li>
+    </ul>
+</aside>
+
+<div class="search-bar">
+    <input type="text" placeholder="Rechercher des cours..." id="searchInput" />
+</div>
+
+<div class="container">
+    <div class="category" id="programming">
+        <h2>Langages de programmation</h2>
+        <p>Apprenez les compétences essentielles en programmation pour développer des applications fonctionnelles.</p>
+        <div class="course-card">
+            <img src="https://img.icons8.com/color/48/000000/php.png" alt="PHP">
+            <h4>Les bases de PHP</h4>
+            <p>Maîtrisez les fondamentaux de PHP</p>
+            <div class="rating">
+                <span>&#9733;&#9733;&#9733;&#9733;&#9734;</span> 4.0
+            </div>
+            <a href="php-course.php" class="start-button">Commencer maintenant</a>
+            <div class="progress-container">
+                <div class="progress-bar" style="width: 25%;"></div>
+            </div>
+        </div>
+        <div class="course-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/226/226777.png" alt="Java">
+            <h4>Java pour débutants</h4>
+            <p>Comprenez la programmation Java depuis zéro</p>
+            <div class="rating">
+                <span>&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5.0
+            </div>
+            <a href="java-course.php" class="start-button">Commencer maintenant</a>
+            <div class="progress-container">
+                <div class="progress-bar" style="width: 50%;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="category" id="design">
+        <h2>Langages de conception</h2>
+        <p>Apprenez les langages qui alimentent la conception web et le développement UI/UX.</p>
+        <div class="course-card">
+            <img src="https://img.icons8.com/color/48/000000/html-5.png" alt="HTML">
+            <h4>Les bases de HTML</h4>
+            <p>Apprenez à créer des pages web avec HTML</p>
+            <div class="rating">
+                <span>&#9733;&#9733;&#9733;&#9734;&#9734;</span> 3.5
+            </div>
+            <a href="html-course.php" class="start-button">Commencer maintenant</a>
+            <div class="progress-container">
+                <div class="progress-bar" style="width: 75%;"></div>
+            </div>
+        </div>
+        <div class="course-card">
+            <img src="https://cdn4.iconfinder.com/data/icons/flat-brand-logo-2/512/css3-512.png" alt="CSS">
+            <h4>CSS pour débutants</h4>
+            <p>Comprenez CSS depuis zéro</p>
+            <div class="rating">
+                <span>&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5.0
+            </div>
+            <a href="css-course.php" class="start-button">Commencer maintenant</a>
+            <div class="progress-container">
+                <div class="progress-bar" style="width: 50%;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="testimonials">
+        <h3>Témoignages des étudiants</h3>
+        <blockquote>"Les bases de PHP étaient un cours fantastique ! Je le recommande vivement." - John Doe</blockquote>
+        <blockquote>"Le cours de Java m'a donné la confiance nécessaire pour commencer à développer des applications réelles." - Jane Smith</blockquote>
+    </div>
+
+    <div class="featured-courses">
+        <h2>Cours à la une</h2>
+        <div class="course-card">
+            <h4>Techniques avancées de PHP</h4>
+            <p>Élevez vos compétences en PHP avec des concepts avancés.</p>
+            <span class="badge">Nouveau</span>
+            <a href="#" class="start-button">Commencer maintenant</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    function searchCourses() {
+        var input, filter, container, cards, h4, i, txtValue;
+        input = document.getElementById('searchInput');
+        filter = input.value.toUpperCase();
+        container = document.querySelector('.container');
+        cards = container.getElementsByClassName('course-card');
+
+        for (i = 0; i < cards.length; i++) {
+            h4 = cards[i].getElementsByTagName('h4')[0];
+            if (h4) {
+                txtValue = h4.textContent || h4.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    cards[i].style.display = "";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+    document.getElementById('searchInput').addEventListener('input', searchCourses);
+</script>
+
+</body>
+</html>
