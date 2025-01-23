@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cours complet Java pour les étudiants, apprenez à créer des applications Java robustes.">
+  <title>Cours Complet Java - L'Ochy Academy</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+  <style>
+   /* Variables CSS */
+    :root {
+      --primary-color: #4a90e2; /* Bleu */
+      --secondary-color: #ff6f61; /* Corail */
+      --accent-color: #333333; /* Gris foncé (pour les corrections) */
+      --text-color: #2d2d2d; /* Texte sombre */
+      --light-text: #ffffff; /* Texte clair */
+      --background-light: #f9f9f9; /* Fond clair */
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Ombre */
+      --transition: all 0.3s ease; /* Transition */
+    }
+
+    /* Styles généraux */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background-light);
+      color: var(--text-color);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 0;
+      font-weight: 700;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Navbar */
+    header {
+      background-color: var(--light-text);
+      box-shadow: var(--shadow);
+      padding: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .navbar h1 {
+      font-size: 2rem;
+      color: var(--primary-color);
+    }
+
+    .navbar h1 span {
+      color: var(--secondary-color);
+    }
+
+    nav {
+      display: flex;
+      gap: 25px;
+    }
+
+    nav a {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-color);
+      transition: var(--transition);
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--secondary-color);
+      transform: translateY(-2px);
+    }
+
+    /* Contenu principal */
+    .content {
+      padding: 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .course-section {
+      margin-bottom: 40px;
+    }
+
+    .course-section h2 {
+      color: var(--primary-color);
+    }
+
+    .course-section p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    pre {
+      background-color: var(--primary-color);
+      color: var(--light-text);
+      padding: 20px;
+      border-radius: 5px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+
+    /* Éditeur de code interactif */
+    .code-editor {
+      margin-top: 20px;
+    }
+
+    .code-editor textarea {
+      width: 100%;
+      height: 150px;
+      padding: 10px;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 14px;
+      border: 2px solid var(--accent-color);
+      border-radius: 5px;
+      resize: vertical;
+      background-color: var(--light-text);
+      color: var(--text-color);
+    }
+
+    .code-editor button {
+      display: block;
+      margin-top: 10px;
+      background: var(--secondary-color);
+      color: var(--light-text);
+      padding: 10px 20px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .code-editor button:hover {
+      background: var(--accent-color);
+      transform: scale(1.05);
+    }
+
+    .output {
+      margin-top: 20px;
+      border: 2px solid var(--accent-color);
+      border-radius: 5px;
+      padding: 10px;
+      background: var(--light-text);
+    }
+
+    .output iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      background: var(--light-text);
+    }
+
+    /* Exercices */
+    .exercise {
+      background-color: var(--primary-color); /* Bleu */
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 5px;
+    }
+
+    .exercise h3 {
+      color: var(--light-text);
+    }
+
+    .solution {
+      background-color: var(--accent-color); /* Gris foncé */
+      padding: 15px;
+      border-radius: 5px;
+      margin-top: 10px;
+      color: var(--light-text); /* Texte clair pour contraste */
+    }
+
+    /* Boutons */
+    .back-link {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: var(--secondary-color);
+      color: var(--light-text);
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: bold;
+      transition: var(--transition);
+    }
+
+    .back-link:hover {
+      background-color: var(--accent-color);
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--primary-color);
+      color: var(--light-text);
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="navbar">
+      <h1><span>L'</span>Ochy Academy</h1>
+      <nav>
+        <a href="index.html" ">Accueil</a>
+        <a href="cours.html" class="active>Cours</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="about.html">À propos</a>
+      </nav>
+    </div>
+  </header>
+  <main class="content">
+    <section class="course-section">
+      <h2>Introduction à Java</h2>
+      <p>Java est un langage de programmation orienté objet créé par Sun Microsystems dans les années 1990. Il est aujourd'hui l'un des langages les plus populaires pour le développement d'applications web, mobiles et de bureau.</p>
+      <p>Java fonctionne selon le principe du "write once, run anywhere", ce qui signifie que le code Java peut être exécuté sur n'importe quelle machine disposant d'une machine virtuelle Java (JVM).</p>
+    </section>
+
+    <section class="course-section">
+      <h2>1. Structure d'une application Java</h2>
+      <p>Une application Java de base consiste principalement en une classe contenant une méthode principale <code>public static void main(String[] args)</code>. Voici un exemple d'application de base :</p>
+      <pre><code>public class HelloWorld {
+  public static void main(String[] args) {
+    System.out.println("Bonjour, monde!");
+  }
+}</code></pre>
+      <p>Ce programme affiche le texte "Bonjour, monde!" dans la console.</p>
+    </section>
+
+    <!-- Éditeur de code interactif avec JDoodle -->
+    <section class="course-section">
+      <h2>Éditeur de Code Interactif</h2>
+      <p>Testez votre code Java ici en utilisant JDoodle :</p>
+      <div class="code-editor">
+        <iframe
+          src="https://www.jdoodle.com/online-java-compiler/"
+          width="100%"
+          height="500px"
+          allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+          sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+        ></iframe>
+      </div>
+    </section>
+
+    <section class="course-section">
+      <h2>Exercices</h2>
+      <div class="exercise">
+        <h3>Exercice 1 - Afficher un message</h3>
+        <p><strong>Énoncé :</strong> Créez un programme qui affiche "Bienvenue en Java!" dans la console.</p>
+      </div>
+      <div class="exercise">
+        <h3>Exercice 2 - Somme de deux nombres</h3>
+        <p><strong>Énoncé :</strong> Créez un programme qui demande à l'utilisateur d'entrer deux nombres et affiche leur somme.</p>
+      </div>
+      <div class="exercise">
+        <h3>Exercice 3 - Vérifier si un nombre est pair ou impair</h3>
+        <p><strong>Énoncé :</strong> Créez un programme qui prend un nombre en entrée et affiche s'il est pair ou impair.</p>
+      </div>
+      <div class="exercise">
+        <h3>Exercice 4 - Trouver le plus grand des deux</h3>
+        <p><strong>Énoncé :</strong> Créez un programme qui demande à l'utilisateur d'entrer deux nombres et affiche le plus grand des deux.</p>
+      </div>
+    </section>
+
+    <a href="cours.html" class="back-link">Retour aux Cours</a>
+    <a href="test-java.html" class="back-link">Test</a>
+  </main>
+
+  <!-- Correction des exercices -->
+  <section class="content">
+    <h2>Corrections des Exercices</h2>
+    <section class="solution">
+      <h3>Correction Exercice 1</h3>
+      <p>Le code pour afficher un message est :</p>
+      <pre><code>public class HelloWorld {
+  public static void main(String[] args) {
+    System.out.println("Bienvenue en Java!");
+  }
+}</code></pre>
+    </section>
+
+    <section class="solution">
+      <h3>Correction Exercice 2</h3>
+      <p>Voici le code pour calculer la somme de deux nombres :</p>
+      <pre><code>import java.util.Scanner;
+
+public class Somme {
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    System.out.print("Entrez le premier nombre: ");
+    int num1 = scanner.nextInt();
+    System.out.print("Entrez le second nombre: ");
+    int num2 = scanner.nextInt();
+    System.out.println("La somme est: " + (num1 + num2));
+  }
+}</code></pre>
+    </section>
+
+    <section class="solution">
+      <h3>Correction Exercice 3</h3>
+      <p>Voici le code pour vérifier si un nombre est pair ou impair :</p>
+      <pre><code>import java.util.Scanner;
+
+public class PairImpair {
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    System.out.print("Entrez un nombre: ");
+    int num = scanner.nextInt();
+    
+    if (num % 2 == 0) {
+      System.out.println("Le nombre est pair.");
+    } else {
+      System.out.println("Le nombre est impair.");
+    }
+  }
+}</code></pre>
+    </section>
+
+    <section class="solution">
+      <h3>Correction Exercice 4</h3>
+      <p>Voici le code pour trouver le plus grand nombre :</p>
+      <pre><code>import java.util.Scanner;
+
+public class PlusGrand {
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    System.out.print("Entrez le premier nombre: ");
+    int num1 = scanner.nextInt();
+    System.out.print("Entrez le second nombre: ");
+    int num2 = scanner.nextInt();
+    
+    if (num1 > num2) {
+      System.out.println("Le plus grand nombre est: " + num1);
+    } else {
+      System.out.println("Le plus grand nombre est: " + num2);
+    }
+  }
+}</code></pre>
+    </section>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 L'Ochy Academy. Tous droits réservés. | <a href="mailto:info@mstudy.com">Contactez-nous</a></p>
+  </footer>
+</body>
+</html>
