@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formations Disponibles - L'Ochy Academy</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Variables CSS pour les couleurs */
+        :root {
+            --primary-color: #4a90e2; /* Bleu */
+            --secondary-color: #ff6f61; /* Rouge corail */
+            --accent-color: #ffd166; /* Jaune */
+            --text-color: #2d2d2d; /* Texte sombre */
+            --light-text: #ffffff; /* Texte clair */
+            --background-light: #f9f9f9; /* Fond clair */
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Ombre */
+        }
+
+        /* Styles généraux */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--background-light);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background: var(--light-text);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: var(--primary-color);
+        }
+
+        h1 {
+            font-size: 2.8em;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-bottom: 30px;
+        }
+
+        /* Tableau des formations */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #dfe6e9;
+        }
+
+        th {
+            background: var(--primary-color);
+            color: var(--light-text);
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        tr:hover {
+            background: #dfe6e9;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .formation-icon {
+            font-size: 1.2em;
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+
+        /* Formulaire d'inscription */
+        form {
+            margin-top: 30px;
+            font-size: 1.1em;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: var(--text-color);
+        }
+
+        input, select, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 2px solid #dcdde1;
+            border-radius: 10px;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        button {
+            background: var(--primary-color);
+            color: var(--light-text);
+            border: none;
+            cursor: pointer;
+            font-size: 1.1em;
+            padding: 15px;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: var(--secondary-color);
+        }
+
+        /* Section des avantages */
+        .advantages {
+            margin-top: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .advantage {
+            flex: 1 1 calc(33.333% - 20px);
+            background: var(--light-text);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .advantage i {
+            font-size: 2em;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .advantage h3 {
+            font-size: 1.3em;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .advantage p {
+            font-size: 1em;
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Formations Disponibles</h1>
+
+        <!-- Tableau des formations -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Formation</th>
+                    <th>Description</th>
+                    <th>Prix</th>
+                    <th>Mode</th>
+                    <th>Certificat</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><i class="fas fa-laptop-code formation-icon"></i>Développement Web</td>
+                    <td>Apprenez à créer des sites web modernes avec HTML, CSS, JavaScript et React.</td>
+                    <td>200 €</td>
+                    <td>En ligne</td>
+                    <td>Oui</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-bullhorn formation-icon"></i>Marketing Digital</td>
+                    <td>Maîtrisez les techniques de marketing digital, SEO, réseaux sociaux et publicité en ligne.</td>
+                    <td>150 €</td>
+                    <td>En ligne</td>
+                    <td>Oui</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-tasks formation-icon"></i>Gestion de Projet</td>
+                    <td>Découvrez les méthodologies Agile et Scrum pour gérer des projets efficacement.</td>
+                    <td>300 €</td>
+                    <td>Présentiel</td>
+                    <td>Oui</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-palette formation-icon"></i>Design Graphique</td>
+                    <td>Créez des designs professionnels avec Photoshop, Illustrator et Figma.</td>
+                    <td>250 €</td>
+                    <td>Présentiel</td>
+                    <td>Oui</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-chart-line formation-icon"></i>Analyse de Données</td>
+                    <td>Apprenez à analyser des données avec Python, Pandas et Tableau.</td>
+                    <td>350 €</td>
+                    <td>En ligne</td>
+                    <td>Oui</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Section des avantages -->
+        <h2>Pourquoi choisir L'Ochy Academy ?</h2>
+        <div class="advantages">
+            <div class="advantage">
+                <i class="fas fa-certificate"></i>
+                <h3>Certificats reconnus</h3>
+                <p>Obtenez des certificats reconnus par l'industrie pour booster votre carrière.</p>
+            </div>
+            <div class="advantage">
+                <i class="fas fa-users"></i>
+                <h3>Formateurs experts</h3>
+                <p>Apprenez auprès de formateurs expérimentés et passionnés.</p>
+            </div>
+            <div class="advantage">
+                <i class="fas fa-calendar-check"></i>
+                <h3>Flexibilité</h3>
+                <p>Choisissez entre des cours en ligne ou en présentiel, selon vos disponibilités.</p>
+            </div>
+        </div>
+
+        <!-- Formulaire d'inscription -->
+        <h2>Inscription des Participants</h2>
+        <form action="enregistrer_participant.php" method="post">
+            <div class="form-group">
+                <label for="nom">Nom complet :</label>
+                <input type="text" id="nom" name="nom" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email :</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="formation">Formation :</label>
+                <select id="formation" name="formation" required>
+                    <option value="Développement Web">Développement Web</option>
+                    <option value="Marketing Digital">Marketing Digital</option>
+                    <option value="Gestion de Projet">Gestion de Projet</option>
+                    <option value="Design Graphique">Design Graphique</option>
+                    <option value="Analyse de Données">Analyse de Données</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="mode">Mode :</label>
+                <select id="mode" name="mode" required>
+                    <option value="En ligne">En ligne</option>
+                    <option value="Présentiel">Présentiel</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="message">Message (optionnel) :</label>
+                <textarea id="message" name="message" rows="4"></textarea>
+            </div>
+            <button type="submit">S'inscrire</button>
+        </form>
+    </div>
+</body>
+</html>
