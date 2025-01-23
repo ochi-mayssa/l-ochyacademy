@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cours complet HTML pour apprendre à créer des pages web modernes et accessibles.">
+  <title>Cours Complet HTML - L'Ochy Academy</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
+  <style>
+    /* Variables CSS */
+    :root {
+      --primary-color: #4a90e2; /* Bleu */
+      --secondary-color: #ff6f61; /* Corail */
+      --accent-color: #333333; /* Gris foncé (pour les corrections) */
+      --text-color: #2d2d2d; /* Texte sombre */
+      --light-text: #ffffff; /* Texte clair */
+      --background-light: #f9f9f9; /* Fond clair */
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Ombre */
+      --transition: all 0.3s ease; /* Transition */
+    }
+
+    /* Styles généraux */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background-light);
+      color: var(--text-color);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 0;
+      font-weight: 700;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Navbar */
+    header {
+      background-color: var(--light-text);
+      box-shadow: var(--shadow);
+      padding: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .navbar h1 {
+      font-size: 2rem;
+      color: var(--primary-color);
+    }
+
+    .navbar h1 span {
+      color: var(--secondary-color);
+    }
+
+    nav {
+      display: flex;
+      gap: 25px;
+    }
+
+    nav a {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-color);
+      transition: var(--transition);
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--secondary-color);
+      transform: translateY(-2px);
+    }
+
+    /* Contenu principal */
+    .content {
+      padding: 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .course-section {
+      margin-bottom: 40px;
+    }
+
+    .course-section h2 {
+      color: var(--primary-color);
+    }
+
+    .course-section p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    pre {
+      background-color: var(--primary-color);
+      color: var(--light-text);
+      padding: 20px;
+      border-radius: 5px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+
+    /* Éditeur de code interactif */
+    .code-editor {
+      margin-top: 20px;
+    }
+
+    .code-editor textarea {
+      width: 100%;
+      height: 150px;
+      padding: 10px;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 14px;
+      border: 2px solid var(--accent-color);
+      border-radius: 5px;
+      resize: vertical;
+      background-color: var(--light-text);
+      color: var(--text-color);
+    }
+
+    .code-editor button {
+      display: block;
+      margin-top: 10px;
+      background: var(--secondary-color);
+      color: var(--light-text);
+      padding: 10px 20px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .code-editor button:hover {
+      background: var(--accent-color);
+      transform: scale(1.05);
+    }
+
+    .output {
+      margin-top: 20px;
+      border: 2px solid var(--accent-color);
+      border-radius: 5px;
+      padding: 10px;
+      background: var(--light-text);
+    }
+
+    .output iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      background: var(--light-text);
+    }
+
+    /* Exercices */
+    .exercise {
+      background-color: var(--primary-color); /* Bleu */
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 5px;
+    }
+
+    .exercise h3 {
+      color: var(--light-text);
+    }
+
+    .solution {
+      background-color: var(--accent-color); /* Gris foncé */
+      padding: 15px;
+      border-radius: 5px;
+      margin-top: 10px;
+      color: var(--light-text); /* Texte clair pour contraste */
+    }
+
+    /* Boutons */
+    .back-link {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: var(--secondary-color);
+      color: var(--light-text);
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: bold;
+      transition: var(--transition);
+    }
+
+    .back-link:hover {
+      background-color: var(--accent-color);
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--primary-color);
+      color: var(--light-text);
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="navbar">
+      <h1><span>L'</span>Ochy Academy</h1>
+      <nav>
+        <a href="index.php" class="active">Accueil</a>
+        <a href="cours.php">Cours</a>
+        <a href="quiz.php">Quiz</a>
+        <a href="about.php">À propos</a>
+        <a href="infos.php">Infos Parents</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="content">
+    <section class="course-section">
+      <h2>Introduction à HTML</h2>
+      <p>HTML (Hypertext Markup Language) est le langage standard pour créer des pages web. Il permet de structurer le contenu d'une page web en utilisant des balises spécifiques qui définissent le texte, les images, les liens, et d'autres éléments.</p>
+      <p>Un document HTML est constitué de balises, chaque balise étant généralement composée de deux parties : une balise d'ouverture et une balise de fermeture.</p>
+    </section>
+
+    <section class="course-section">
+      <h2>1. Structure de Base d'un Document HTML</h2>
+      <p>La structure de base d'un document HTML comprend des balises essentielles telles que <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, et <code>&lt;body&gt;</code>.</p>
+      <p>Voici un exemple de structure de base d'une page HTML :</p>
+      <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="fr"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Titre de la page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Bienvenue sur ma page web!&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      <p>Cette structure contient la déclaration DOCTYPE, qui spécifie que le document est un fichier HTML5, et la balise <code>&lt;html&gt;</code>, qui englobe tout le contenu HTML.</p>
+    </section>
+
+    <section class="course-section">
+      <h2>2. Balises HTML de Base</h2>
+      <p>HTML utilise des balises pour structurer et afficher le contenu. Voici quelques balises fondamentales :</p>
+      <ul>
+        <li><strong>&lt;h1&gt;, &lt;h2&gt;, &lt;h3&gt;, ... &lt;h6&gt;</strong> : Balises de titre, utilisées pour structurer les sections de la page.</li>
+        <li><strong>&lt;p&gt;</strong> : Balise de paragraphe, utilisée pour afficher du texte.</li>
+        <li><strong>&lt;a&gt;</strong> : Balise de lien, utilisée pour créer des liens vers d'autres pages.</li>
+        <li><strong>&lt;img&gt;</strong> : Balise d'image, utilisée pour intégrer des images.</li>
+      </ul>
+      <p>Voici un exemple de code HTML avec des balises de titre, paragraphe, et lien :</p>
+      <pre><code>&lt;h1&gt;Mon Premier Titre&lt;/h1&gt;
+&lt;p&gt;Voici un paragraphe avec un <a href="https://www.example.com">lien</a> vers un autre site.&lt;/p&gt;</code></pre>
+    </section>
+
+    <!-- Éditeur de code interactif -->
+    <section class="course-section">
+      <h2>Éditeur de Code Interactif</h2>
+      <p>Testez votre code HTML ici et voyez le résultat en temps réel :</p>
+      <div class="code-editor">
+        <textarea id="code-input" placeholder="Écrivez votre code HTML ici...">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="fr"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Ma Page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Bonjour le monde !&lt;/h1&gt;
+    &lt;p&gt;Ceci est un exemple de page HTML.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+        </textarea>
+        <button onclick="runCode()">Exécuter le Code</button>
+      </div>
+      <div class="output">
+        <h3>Résultat</h3>
+        <iframe id="code-output"></iframe>
+      </div>
+    </section>
+
+    <section class="course-section">
+      <h2>Exercices</h2>
+      <div class="exercise">
+        <h3>Exercice 1 - Créer une page HTML</h3>
+        <p><strong>Énoncé :</strong> Créez une page HTML avec un titre, un paragraphe et un lien vers un autre site.</p>
+      </div>
+      <div class="exercise">
+        <h3>Exercice 2 - Créer une liste à puces</h3>
+        <p><strong>Énoncé :</strong> Créez une liste à puces avec trois éléments.</p>
+      </div>
+      <div class="exercise">
+        <h3>Exercice 3 - Créer un formulaire simple</h3>
+        <p><strong>Énoncé :</strong> Créez un formulaire avec des champs pour le nom et l'email.</p>
+      </div>
+    </section>
+
+    <a href="cours.php" class="back-link">Retour aux Cours</a>
+    <a href="test.php" class="back-link">Test</a>
+  </main>
+
+  <!-- Correction des exercices -->
+  <section class="content">
+    <h2>Corrections des Exercices</h2>
+    <section class="solution">
+      <h3>Correction Exercice 1</h3>
+      <p>Voici la solution pour créer une page HTML avec un titre, un paragraphe et un lien :</p>
+      <pre><code>&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Ma Première Page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Bienvenue sur ma page&lt;/h1&gt;
+    &lt;p&gt;Cliquez sur ce <a href="https://www.example.com">lien</a> pour en savoir plus.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    </section>
+
+    <section class="solution">
+      <h3>Correction Exercice 2</h3>
+      <p>Voici la solution pour créer une liste à puces :</p>
+      <pre><code>&lt;ul&gt;
+  &lt;li&gt;Premier élément&lt;/li&gt;
+  &lt;li&gt;Deuxième élément&lt;/li&gt;
+  &lt;li&gt;Troisième élément&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+    </section>
+
+    <section class="solution">
+      <h3>Correction Exercice 3</h3>
+      <p>Voici la solution pour créer un formulaire simple :</p>
+      <pre><code>&lt;form action="/submit" method="post"&gt;
+  &lt;label for="name"&gt;Nom&lt;/label&gt;
+  &lt;input type="text" id="name" name="name"&gt;
+
+  &lt;label for="email"&gt;Email&lt;/label&gt;
+  &lt;input type="email" id="email" name="email"&gt;
+
+  &lt;button type="submit"&gt;Envoyer&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+    </section>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 L'Ochy Academy. Tous droits réservés. | <a href="mailto:info@mstudy.com">Contactez-nous</a></p>
+  </footer>
+
+  <script>
+    function runCode() {
+      const codeInput = document.getElementById('code-input').value;
+      const codeOutput = document.getElementById('code-output');
+      const iframeDocument = codeOutput.contentWindow.document;
+
+      // Écrire le code dans l'iframe
+      iframeDocument.open();
+      iframeDocument.write(codeInput);
+      iframeDocument.close();
+    }
+
+    // Exécuter le code par défaut au chargement de la page
+    window.onload = runCode;
+  </script>
+</body>
+</html>
