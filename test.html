@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test HTML - L'Ochy Academy</title>
+    <style>
+        /* Styles généraux */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            animation: gradientAnimation 10s ease infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Timer en haut */
+        .timer {
+            font-size: 1.5rem;
+            color: #ff6f61;
+            text-align: center;
+            font-weight: bold;
+            animation: pulse 1.5s infinite;
+            margin: 20px 0;
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes pulse {
+            0% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.05); }
+            100% { transform: translateX(-50%) scale(1); }
+        }
+
+        /* Conteneur principal du quiz */
+        .quiz-container {
+            width: 90%;
+            max-width: 800px;
+            margin: 80px auto 20px; /* Ajout de marge en haut pour le timer */
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            color: #333;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Titre du quiz */
+        .quiz-title {
+            font-size: 2.5rem;
+            color: #007acc;
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Section des questions */
+        .question {
+            margin-bottom: 30px;
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .question:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .question h3 {
+            font-size: 1.5rem;
+            color: #007acc;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .quiz-options {
+            margin-left: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 15px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            resize: vertical;
+            background-color: #f9f9f9;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #007acc;
+            box-shadow: 0 0 10px rgba(0, 122, 204, 0.6);
+        }
+
+        /* Formulaire */
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"] {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group input[type="email"]:focus {
+            outline: none;
+            border-color: #007acc;
+            box-shadow: 0 0 10px rgba(0, 122, 204, 0.6);
+        }
+
+        /* Boutons */
+        .quiz-buttons {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        button {
+            background-color: #007acc;
+            color: white;
+            padding: 15px 35px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 122, 204, 0.3);
+        }
+
+        button:hover {
+            background-color: #005f99;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 122, 204, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 10px rgba(0, 122, 204, 0.3);
+        }
+
+        /* Message de score */
+        .score-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #007acc;
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            font-size: 1.4rem;
+            z-index: 1000;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translate(-50%, -60%); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
+        }
+
+        .score-message .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        .score-message .close:hover {
+            color: #ff6f61;
+        }
+
+        /* Responsive - Mobile */
+        @media (max-width: 768px) {
+            .quiz-container {
+                width: 95%;
+                padding: 20px;
+            }
+
+            .quiz-title {
+                font-size: 2rem;
+            }
+
+            button {
+                width: 100%;
+                padding: 15px;
+            }
+
+            .timer {
+                font-size: 1.2rem;
+                padding: 8px 15px;
+            }
+        }
+    </style>
+</head>
+<body onload="startTimer()">
+    <!-- Timer en haut -->
+    <div class="timer" id="timer">Temps restant : 5:00</div>
+
+    <!-- Conteneur du quiz -->
+    <div class="quiz-container">
+        <h1 class="quiz-title">Examen HTML</h1>
+        <form id="test-form">
+            <div class="form-group">
+                <label for="student_name">Nom :</label>
+                <input type="text" id="student_name" required placeholder="Votre nom">
+            </div>
+            <div class="form-group">
+                <label for="student_email">Email :</label>
+                <input type="email" id="student_email" required placeholder="Votre email">
+            </div>
+            <div id="questions-container"></div>
+            <div class="quiz-buttons">
+                <button type="submit">Soumettre l'examen</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Mock questions (replace with your own questions)
+        const questions = [
+            { id: 1, question_text: "Qu'est-ce que HTML?", correct_answer: "Un langage de balisage" },
+            { id: 2, question_text: "Quelle balise est utilisée pour créer un paragraphe en HTML?", correct_answer: "<p>" },
+            { id: 3, question_text: "Quelle balise est utilisée pour insérer une image en HTML?", correct_answer: "<img>" }
+        ];
+
+        let timeLeft = 300;  // 5 minutes
+
+        // Timer function
+        function startTimer() {
+            const timer = setInterval(() => {
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                document.getElementById('timer').innerText = `Temps restant : ${minutes}:${seconds.toString().padStart(2, '0')}`;
+                timeLeft--;
+                if (timeLeft < 0) {
+                    clearInterval(timer);
+                    alert("Le temps est écoulé !");
+                    submitExam();
+                }
+            }, 1000);
+        }
+
+        // Load questions into the form
+        function loadQuestions() {
+            const container = document.getElementById('questions-container');
+            questions.forEach(question => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question';
+                questionDiv.innerHTML = `
+                    <h3>${question.question_text}</h3>
+                    <div class="quiz-options">
+                        <textarea name="answers[${question.id}]" rows="4" cols="50" placeholder="Écrivez votre réponse ici..."></textarea>
+                    </div>
+                `;
+                container.appendChild(questionDiv);
+            });
+        }
+
+        // Submit exam and calculate score
+        function submitExam() {
+            const studentName = document.getElementById('student_name').value;
+            const studentEmail = document.getElementById('student_email').value;
+            const answers = {};
+            document.querySelectorAll('textarea').forEach(textarea => {
+                const questionId = textarea.name.match(/\d+/)[0];
+                answers[questionId] = textarea.value;
+            });
+
+            let score = 0;
+            questions.forEach(question => {
+                if (answers[question.id] && answers[question.id].toLowerCase() === question.correct_answer.toLowerCase()) {
+                    score++;
+                }
+            });
+
+            // Save results to localStorage
+            const result = {
+                student_name: studentName,
+                student_email: studentEmail,
+                score: score,
+                totalQuestions: questions.length,
+                timestamp: new Date().toLocaleString()
+            };
+            localStorage.setItem('exam_result', JSON.stringify(result));
+
+            // Display score message
+            let message = '';
+            if (score === questions.length) {
+                message = `Félicitations ${studentName} ! Vous avez obtenu un score parfait de ${score} / ${questions.length}. Vous êtes un expert !`;
+            } else if (score >= questions.length / 2) {
+                message = `Bravo ${studentName} ! Vous avez obtenu un score de ${score} / ${questions.length}. Vous êtes sur la bonne voie, continuez à apprendre !`;
+            } else {
+                message = `Merci ${studentName} ! Vous avez terminé l'examen avec un score de ${score} / ${questions.length}. Ne vous découragez pas, continuez à pratiquer et vous ferez mieux la prochaine fois.`;
+            }
+            alert(message);
+        }
+
+        // Event listener for form submission
+        document.getElementById('test-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            submitExam();
+        });
+
+        // Load questions when the page loads
+        loadQuestions();
+    </script>
+</body>
+</html>
