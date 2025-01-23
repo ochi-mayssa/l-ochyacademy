@@ -46,7 +46,7 @@
     header {
       background-color: var(--light-text);
       box-shadow: var(--shadow);
-      padding: 20px;
+      padding: 10px 20px;
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -61,7 +61,7 @@
     }
 
     .navbar h1 {
-      font-size: 2rem;
+      font-size: 1.5rem;
       color: var(--primary-color);
     }
 
@@ -71,11 +71,11 @@
 
     nav {
       display: flex;
-      gap: 25px;
+      gap: 15px;
     }
 
     nav a {
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 600;
       color: var(--text-color);
       transition: var(--transition);
@@ -92,19 +92,19 @@
       background: linear-gradient(135deg, var(--primary-color), #6a11cb);
       color: var(--light-text);
       text-align: center;
-      padding: 150px 20px;
+      padding: 100px 20px;
       position: relative;
       overflow: hidden;
     }
 
     .hero h2 {
-      font-size: 3rem;
+      font-size: 2rem;
       margin-bottom: 15px;
       animation: fadeIn 1.5s ease-in-out;
     }
 
     .hero p {
-      font-size: 1.2rem;
+      font-size: 1rem;
       margin-bottom: 30px;
       animation: fadeIn 2s ease-in-out;
     }
@@ -112,8 +112,8 @@
     .hero .cta {
       background-color: var(--secondary-color);
       color: var(--light-text);
-      font-size: 1.2rem;
-      padding: 15px 30px;
+      font-size: 1rem;
+      padding: 10px 20px;
       border: none;
       border-radius: 50px;
       cursor: pointer;
@@ -428,8 +428,25 @@
       nav {
         width: 100%;
         flex-direction: column;
-        gap: 15px;
+        gap: 10px;
         margin-top: 10px;
+      }
+
+      .hero {
+        padding: 80px 20px;
+      }
+
+      .hero h2 {
+        font-size: 1.5rem;
+      }
+
+      .hero p {
+        font-size: 0.9rem;
+      }
+
+      .hero .cta {
+        font-size: 0.9rem;
+        padding: 8px 16px;
       }
 
       .footer-content {
@@ -443,6 +460,33 @@
 
       .social-icons {
         justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .navbar h1 {
+        font-size: 1.2rem;
+      }
+
+      nav a {
+        font-size: 0.9rem;
+      }
+
+      .hero {
+        padding: 60px 20px;
+      }
+
+      .hero h2 {
+        font-size: 1.2rem;
+      }
+
+      .hero p {
+        font-size: 0.8rem;
+      }
+
+      .hero .cta {
+        font-size: 0.8rem;
+        padding: 6px 12px;
       }
     }
 
