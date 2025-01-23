@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Quiz PHP pour tester vos connaissances sur le langage PHP.">
+  <title>Quiz PHP - L'Ochy Academy</title>
+  <style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #2c3e50; 
+  color: #ecf0f1; 
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: white; 
+  border-bottom: 2px solid #f4c300; 
+  padding: 10px 20px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar a {
+  color: black; /* Light color for navbar links */
+  font-size: 18px;
+  text-decoration: none;
+  margin-left: 15px;
+}
+
+.navbar a:hover {
+  color: black; /* Accent color on hover */
+}
+
+main {
+  padding: 50px;
+}
+h1{
+  color: black;
+}
+h2 {
+  color: #f4c300; 
+}
+
+.quiz-section {
+  margin-bottom: 40px;
+}
+
+.quiz-question {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #ecf0f1; /* Light text for quiz questions */
+}
+
+.quiz-options {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.quiz-options input {
+  margin-right: 10px;
+}
+
+.quiz-buttons {
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  background-color: #f4c300;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #f4c300; 
+}
+
+footer {
+  background-color: #1a252f; /* Dark footer background */
+  color: #ecf0f1; /* Light text for footer */
+  text-align: center;
+  padding: 20px;
+}
+
+footer a {
+  color: #f4c300; /* Accent color for footer links */
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+    .result.correct {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    .result.incorrect {
+      background-color: #f44336;
+      color: white;
+    }
+	.result { 
+	margin-top: 20px; 
+	padding: 20px;
+	border-radius: 5px; 
+	background-color: #e3f2fd; 
+	}
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="navbar">
+      <h1><span style="color: #f4c300;">L'</span>Ochy Academy</h1>
+      <nav>
+        <a href="index.php">Accueil</a>
+        <a href="quiz-css.php">Quiz CSS</a>
+        <a href="quiz-html.php">Quiz HTML</a>
+        <a href="quiz-java.php">Quiz Java</a>
+        <a href="quiz-angular.php">Quiz Angular</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h2>Quiz PHP - Testez vos connaissances PHP</h2>
+
+    <form id="quiz-form">
+
+      <!-- Question 1 -->
+      <section class="quiz-section">
+        <h3>1. Quelle est la syntaxe correcte pour afficher du texte en PHP ?</h3>
+        <div class="quiz-options">
+          <label><input type="radio" name="php-q1" value="a"> <code>echo "texte";</code></label><br>
+          <label><input type="radio" name="php-q1" value="b"> <code>echo texte;</code></label><br>
+          <label><input type="radio" name="php-q1" value="c"> <code>print "texte";</code></label><br>
+        </div>
+      </section>
+
+      <!-- Question 2 -->
+      <section class="quiz-section">
+        <h3>2. Quelle est la fonction utilisée pour inclure un fichier PHP dans un autre fichier ?</h3>
+        <div class="quiz-options">
+          <label><input type="radio" name="php-q2" value="a"> include()</label><br>
+          <label><input type="radio" name="php-q2" value="b"> include_once()</label><br>
+          <label><input type="radio" name="php-q2" value="c"> require()</label><br>
+        </div>
+      </section>
+
+      <!-- Question 3 -->
+      <section class="quiz-section">
+        <h3>3. Quelle superglobale est utilisée pour accéder aux données envoyées par une méthode POST ?</h3>
+        <div class="quiz-options">
+          <label><input type="radio" name="php-q3" value="a"> $_GET</label><br>
+          <label><input type="radio" name="php-q3" value="b"> $_POST</label><br>
+          <label><input type="radio" name="php-q3" value="c"> $_REQUEST</label><br>
+        </div>
+      </section>
+
+      <!-- Question 4 -->
+      <section class="quiz-section">
+        <h3>4. Comment créer une fonction en PHP ?</h3>
+        <div class="quiz-options">
+          <label><input type="radio" name="php-q4" value="a"> function maFonction() { }</label><br>
+          <label><input type="radio" name="php-q4" value="b"> def maFonction() { }</label><br>
+          <label><input type="radio" name="php-q4" value="c"> create function maFonction() { }</label><br>
+        </div>
+      </section>
+
+      <!-- Question 5 -->
+      <section class="quiz-section">
+        <h3>5. Quelle fonction PHP est utilisée pour récupérer une valeur de session ?</h3>
+        <div class="quiz-options">
+          <label><input type="radio" name="php-q5" value="a"> session()</label><br>
+          <label><input type="radio" name="php-q5" value="b"> session_start()</label><br>
+          <label><input type="radio" name="php-q5" value="c"> $_SESSION</label><br>
+        </div>
+      </section>
+
+      <div class="quiz-buttons">
+        <button type="button" class="btn" onclick="checkAnswers()">Vérifier les réponses</button>
+      </div>
+    </form>
+
+    <div id="result" class="result"></div>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 L'Ochy Academy. Tous droits réservés.</p>
+  </footer>
+
+  <script>
+    function checkAnswers() {
+      let score = 0;
+
+      // PHP Question 1
+      if (document.querySelector('input[name="php-q1"]:checked')?.value === 'a') {
+        score++;
+      }
+
+      // PHP Question 2
+      if (document.querySelector('input[name="php-q2"]:checked')?.value === 'a') {
+        score++;
+      }
+
+      // PHP Question 3
+      if (document.querySelector('input[name="php-q3"]:checked')?.value === 'b') {
+        score++;
+      }
+
+      // PHP Question 4
+      if (document.querySelector('input[name="php-q4"]:checked')?.value === 'a') {
+        score++;
+      }
+
+      // PHP Question 5
+      if (document.querySelector('input[name="php-q5"]:checked')?.value === 'c') {
+        score++;
+      }
+
+      const resultDiv = document.getElementById('result');
+      if (score === 5) {
+        resultDiv.textContent = "Félicitations, vous avez toutes les bonnes réponses !";
+        resultDiv.style.backgroundColor = '#4caf50';
+      } else {
+        resultDiv.textContent = `Vous avez ${score} bonne(s) réponse(s). Essayez encore !`;
+        resultDiv.style.backgroundColor = '#f44336';
+      }
+    }
+  </script>
+
+</body>
+</html>
