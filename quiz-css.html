@@ -308,11 +308,11 @@
     <div class="navbar">
       <h1>L'<span>Ochy</span> Academy</h1>
       <nav>
-        <a href="index.php">Accueil</a>
-        <a href="quiz-html.php">Quiz Html</a>
-        <a href="quiz-java.php">Quiz Java</a>
-        <a href="quiz-angular.php">Quiz Angular</a>
-		<a href="quiz-php.php">Quiz Php </a>
+        <a href="index.html">Accueil</a>
+        <a href="quiz-html.html">Quiz Html</a>
+        <a href="quiz-java.html">Quiz Java</a>
+        <a href="quiz-angular.html">Quiz Angular</a>
+		<a href="quiz-php.html">Quiz Php </a>
       </nav>
     </div>
   </header>
@@ -439,6 +439,8 @@
       }
 
       const resultDiv = document.getElementById('result');
+      resultDiv.style.display = 'block'; // Afficher la section des résultats
+
       if (score === 5) {
         resultDiv.textContent = "Félicitations, vous avez toutes les bonnes réponses !";
         resultDiv.style.backgroundColor = '#4caf50';
