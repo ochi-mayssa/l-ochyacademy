@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Quiz HTML pour tester vos connaissances sur le langage HTML.">
+  <title>Quiz HTML - L'Ochy Academy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    /* CSS Variables for Reusability */
+    :root {
+      --primary-color: #4a90e2;
+      --secondary-color: #ff6f61;
+      --accent-color: #ffd166;
+      --text-color: #2d2d2d;
+      --light-text: #ffffff;
+      --background-light: #f9f9f9;
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    /* General Styles */
+    body {
+      background-color: var(--background-light);
+      color: var(--text-color);
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 0;
+      font-weight: 700;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Header */
+    header {
+      background-color: var(--light-text);
+      box-shadow: var(--shadow);
+      padding: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .navbar h1 {
+      font-size: 2rem;
+      color: var(--primary-color);
+    }
+
+    .navbar h1 span {
+      color: var(--secondary-color);
+    }
+
+    nav {
+      display: flex;
+      gap: 25px;
+    }
+
+    nav a {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-color);
+      transition: var(--transition);
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--secondary-color);
+      transform: translateY(-2px);
+    }
+
+    /* Main Content */
+    main {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 30px;
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      color: var(--primary-color);
+      margin-bottom: 20px;
+    }
+
+    /* Quiz Section */
+    .quiz-section {
+      margin-bottom: 40px;
+    }
+
+    .quiz-question {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: var(--text-color);
+    }
+
+    .quiz-options {
+      margin-left: 20px;
+      margin-bottom: 20px;
+    }
+
+    .quiz-options label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 1rem;
+      color: var(--text-color);
+    }
+
+    .quiz-options input {
+      margin-right: 10px;
+    }
+
+    .quiz-buttons {
+      margin-top: 20px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      background-color: var(--primary-color);
+      color: var(--light-text);
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn:hover {
+      background-color: var(--secondary-color);
+      transform: scale(1.05);
+    }
+
+    /* Result Section */
+    .result {
+      display: none;
+      background-color: var(--light-text);
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .result.correct {
+      background-color: #4caf50;
+      color: var(--light-text);
+    }
+
+    .result.incorrect {
+      background-color: #f44336;
+      color: var(--light-text);
+    }
+
+    /* Footer Styles */
+    footer {
+      background: linear-gradient(135deg, var(--primary-color), #6a11cb);
+      color: var(--light-text);
+      padding: 40px 20px;
+      border-top: 3px solid var(--accent-color);
+      margin-top: 40px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-section {
+      text-align: left;
+    }
+
+    .footer-section h4 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: var(--accent-color);
+    }
+
+    .footer-section p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--light-text);
+    }
+
+    .footer-section.links ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-section.links ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-section.links ul li a {
+      color: var(--light-text);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-section.links ul li a:hover {
+      color: var(--accent-color);
+      text-decoration: underline;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-icons .social-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: var(--light-text);
+      color: var(--primary-color);
+      border-radius: 50%;
+      font-size: 1.2rem;
+      transition: var(--transition);
+    }
+
+    .social-icons .social-icon:hover {
+      background-color: var(--accent-color);
+      color: var(--light-text);
+      transform: translateY(-5px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-bottom p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--light-text);
+    }
+
+    .footer-bottom a {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+
+    .footer-bottom a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        width: 100%;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 10px;
+      }
+
+      main {
+        grid-template-columns: 1fr;
+      }
+
+      .quiz-available {
+        order: -1; /* Déplacer la section des quiz disponibles en haut sur mobile */
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .footer-section {
+        margin-bottom: 20px;
+      }
+
+      .social-icons {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="navbar">
+      <h1>L'<span>Ochy</span> Academy</h1>
+      <nav>
+        <a href="index.php">Accueil</a>
+        <a href="quiz-css.php">Quiz CSS</a>
+        <a href="quiz-java.php">Quiz Java</a>
+        <a href="quiz-angular.php">Quiz Angular</a>
+        <a href="quiz-php.php">Quiz PHP</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Section principale (quiz actuel) -->
+    <div class="quiz-main">
+      <h2>Quiz HTML - Testez vos connaissances HTML</h2>
+
+      <form id="quiz-form">
+        <!-- Question 1 -->
+        <section class="quiz-section">
+          <h3>1. Quel est le bon attribut pour lier un fichier CSS à une page HTML ?</h3>
+          <div class="quiz-options">
+            <label><input type="radio" name="html-q1" value="a"> <code>link</code></label><br>
+            <label><input type="radio" name="html-q1" value="b"> <code>style</code></label><br>
+            <label><input type="radio" name="html-q1" value="c"> <code>css</code></label><br>
+          </div>
+        </section>
+
+        <!-- Question 2 -->
+        <section class="quiz-section">
+          <h3>2. Quelle balise est utilisée pour ajouter un lien hypertexte ?</h3>
+          <div class="quiz-options">
+            <label><input type="radio" name="html-q2" value="a"> <code>a</code></label><br>
+            <label><input type="radio" name="html-q2" value="b"> <code>link</code></label><br>
+            <label><input type="radio" name="html-q2" value="c"> <code>href</code></label><br>
+          </div>
+        </section>
+
+        <!-- Question 3 -->
+        <section class="quiz-section">
+          <h3>3. Quelle balise HTML est utilisée pour créer un formulaire ?</h3>
+          <div class="quiz-options">
+            <label><input type="radio" name="html-q3" value="a"> <code>form</code></label><br>
+            <label><input type="radio" name="html-q3" value="b"> <code>input</code></label><br>
+            <label><input type="radio" name="html-q3" value="c"> <code>button</code></label><br>
+          </div>
+        </section>
+
+        <!-- Question 4 -->
+        <section class="quiz-section">
+          <h3>4. Comment créer un lien vers un autre site web ?</h3>
+          <div class="quiz-options">
+            <label><input type="radio" name="html-q4" value="a"> <code>&lt;a href="url"&gt;Lien&lt;/a&gt;</code></label><br>
+            <label><input type="radio" name="html-q4" value="b"> <code>&lt;link&gt;Lien&lt;/link&gt;</code></label><br>
+            <label><input type="radio" name="html-q4" value="c"> <code>&lt;url&gt;Lien&lt;/url&gt;</code></label><br>
+          </div>
+        </section>
+
+        <!-- Question 5 -->
+        <section class="quiz-section">
+          <h3>5. Quelle balise est utilisée pour insérer une image dans une page HTML ?</h3>
+          <div class="quiz-options">
+            <label><input type="radio" name="html-q5" value="a"> <code>image</code></label><br>
+            <label><input type="radio" name="html-q5" value="b"> <code>img</code></label><br>
+            <label><input type="radio" name="html-q5" value="c"> <code>picture</code></label><br>
+          </div>
+        </section>
+
+        <div class="quiz-buttons">
+          <button type="button" class="btn" onclick="checkAnswers()">Vérifier les réponses</button>
+        </div>
+      </form>
+
+      <div id="result" class="result"></div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section about">
+        <h4>À Propos</h4>
+        <p>L'Ochy Academy est dédiée à fournir des ressources éducatives de qualité pour tous. Rejoignez-nous pour apprendre et grandir ensemble.</p>
+      </div>
+      <div class="footer-section links">
+        <h4>Liens Utiles</h4>
+        <ul>
+          <li><a href="index.php">Accueil</a></li>
+		  <li><a href="">A propos </a></li>
+        </ul>
+      </div>
+      <div class="footer-section social">
+        <h4>Réseaux Sociaux</h4>
+        <div class="social-icons">
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 L'Ochy Academy. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script>
+    function checkAnswers() {
+      let score = 0;
+
+      // HTML Question 1
+      if (document.querySelector('input[name="html-q1"]:checked')?.value === 'a') {
+        score++;
+      }
+
+      // HTML Question 2
+      if (document.querySelector('input[name="html-q2"]:checked')?.value === 'a') {
+        score++;
+      }
+
+      // HTML Question 3
+      if (document.querySelector('input[name="html-q3"]:checked')?.value === 'a') {
+        score++;
+      }
+
+      // HTML Question 4
+      if (document.querySelector('input[name="html-q4"]:checked')?.value === 'a') {
+        score++;
+      }
+
+      // HTML Question 5
+      if (document.querySelector('input[name="html-q5"]:checked')?.value === 'b') {
+        score++;
+      }
+
+      const resultDiv = document.getElementById('result');
+      if (score === 5) {
+        resultDiv.textContent = "Félicitations, vous avez toutes les bonnes réponses !";
+        resultDiv.classList.add('correct');
+        resultDiv.classList.remove('incorrect');
+      } else {
+        resultDiv.textContent = `Vous avez ${score} bonne(s) réponse(s). Essayez encore !`;
+        resultDiv.classList.add('incorrect');
+        resultDiv.classList.remove('correct');
+      }
+
+      resultDiv.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
