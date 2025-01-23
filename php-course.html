@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cours complet de PHP pour les étudiants, apprenez les bases et développez vos compétences en développement web.">
+  <title>Cours Complet PHP - L'Ochy Academy</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+  <style>
+    /* Variables CSS */
+    :root {
+      --primary-color: #4a90e2; /* Bleu */
+      --secondary-color: #ff6f61; /* Corail */
+      --accent-color: #333333; /* Gris foncé (pour les corrections) */
+      --text-color: #2d2d2d; /* Texte sombre */
+      --light-text: #ffffff; /* Texte clair */
+      --background-light: #f9f9f9; /* Fond clair */
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Ombre */
+      --transition: all 0.3s ease; /* Transition */
+    }
+
+    /* Styles généraux */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background-light);
+      color: var(--text-color);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 0;
+      font-weight: 700;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Navbar */
+    header {
+      background-color: var(--light-text);
+      box-shadow: var(--shadow);
+      padding: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .navbar h1 {
+      font-size: 2rem;
+      color: var(--primary-color);
+    }
+
+    .navbar h1 span {
+      color: var(--secondary-color);
+    }
+
+    nav {
+      display: flex;
+      gap: 25px;
+    }
+
+    nav a {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-color);
+      transition: var(--transition);
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--secondary-color);
+      transform: translateY(-2px);
+    }
+
+    /* Contenu principal */
+    .content {
+      padding: 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .course-section {
+      margin-bottom: 40px;
+    }
+
+    .course-section h2 {
+      color: var(--primary-color);
+    }
+
+    .course-section p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    pre {
+      background-color: var(--primary-color);
+      color: var(--light-text);
+      padding: 20px;
+      border-radius: 5px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+
+    /* Éditeur de code interactif */
+    .code-editor {
+      margin-top: 20px;
+    }
+
+    .code-editor textarea {
+      width: 100%;
+      height: 150px;
+      padding: 10px;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 14px;
+      border: 2px solid var(--accent-color);
+      border-radius: 5px;
+      resize: vertical;
+      background-color: var(--light-text);
+      color: var(--text-color);
+    }
+
+    .code-editor button {
+      display: block;
+      margin-top: 10px;
+      background: var(--secondary-color);
+      color: var(--light-text);
+      padding: 10px 20px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .code-editor button:hover {
+      background: var(--accent-color);
+      transform: scale(1.05);
+    }
+
+    .output {
+      margin-top: 20px;
+      border: 2px solid var(--accent-color);
+      border-radius: 5px;
+      padding: 10px;
+      background: var(--light-text);
+    }
+
+    .output iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      background: var(--light-text);
+    }
+
+    /* Exercices */
+    .exercise {
+      background-color: var(--primary-color); /* Bleu */
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 5px;
+    }
+
+    .exercise h3 {
+      color: var(--light-text);
+    }
+
+    .solution {
+      background-color: var(--accent-color); /* Gris foncé */
+      padding: 15px;
+      border-radius: 5px;
+      margin-top: 10px;
+      color: var(--light-text); /* Texte clair pour contraste */
+    }
+
+    /* Boutons */
+    .back-link {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: var(--secondary-color);
+      color: var(--light-text);
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: bold;
+      transition: var(--transition);
+    }
+
+    .back-link:hover {
+      background-color: var(--accent-color);
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--primary-color);
+      color: var(--light-text);
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="navbar">
+      <h1><span>L'</span>Ochy Academy</h1>
+      <nav>
+        <a href="index.php" class="active">Accueil</a>
+        <a href="cours.php">Cours</a>
+        <a href="quiz.php">Quiz</a>
+        <a href="about.php">À propos</a>
+        <a href="infos.php">Infos Parents</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="content">
+    <section class="course-section">
+      <h2>Introduction à PHP</h2>
+      <p>PHP est un langage de script côté serveur largement utilisé pour la création de sites Web dynamiques. Il peut être intégré dans des pages HTML et interagir avec des bases de données.</p>
+      <p>Dans ce cours, nous allons aborder les bases de PHP, la syntaxe, les variables, les opérateurs, les boucles, les fonctions, et bien plus encore.</p>
+    </section>
+
+    <section class="course-section">
+      <h2>1. Syntaxe de base</h2>
+      <p>PHP utilise une syntaxe très simple. Les balises PHP sont définies par <code>&lt;?php ... ?&gt;</code>. Voici un exemple basique :</p>
+      <pre><code>&lt;?php
+echo "Bonjour, le monde!";
+?&gt;</code></pre>
+      <p>Dans cet exemple, nous utilisons la fonction <code>echo</code> pour afficher du texte à l'écran.</p>
+    </section>
+
+    <section class="course-section">
+      <h2>2. Variables et Types de données</h2>
+      <p>En PHP, une variable commence par le signe dollar <code>$</code>, suivi du nom de la variable. Les types de données les plus courants sont :</p>
+      <ul>
+        <li><strong>string</strong> - chaîne de caractères</li>
+        <li><strong>int</strong> - entier</li>
+        <li><strong>float</strong> - nombre à virgule flottante</li>
+        <li><strong>boolean</strong> - valeur vrai ou faux</li>
+      </ul>
+      <p>Exemple :</p>
+      <pre><code>&lt;?php
+$nom = "John";
+$age = 25;
+$prix = 19.99;
+$estMajeur = true;
+echo "Nom: $nom, Age: $age, Prix: $prix, Majeur: $estMajeur";
+?&gt;</code></pre>
+    </section>
+
+    <!-- Éditeur de code interactif -->
+    <section class="course-section">
+      <h2>Éditeur de Code Interactif</h2>
+      <p>Testez votre code PHP ici et voyez le résultat en temps réel :</p>
+      <div class="code-editor">
+        <iframe
+          src="https://www.jdoodle.com/embed/v0/6Y7F"
+          width="100%"
+          height="500px"
+          style="border: 2px solid var(--accent-color); border-radius: 5px;"
+        ></iframe>
+      </div>
+    </section>
+
+    <section class="course-section">
+      <h2>Exercices</h2>
+      <div class="exercise">
+        <h3>Exercice 1 - Formulaire et affichage</h3>
+        <p><strong>Énoncé :</strong> Créez un formulaire avec deux champs : prénom et âge. Lorsque l'utilisateur soumet le formulaire, affichez un message personnalisé avec son prénom et son âge.</p>
+      </div>
+      <div class="exercise">
+        <h3>Exercice 2 - Calcul de l'âge</h3>
+        <p><strong>Énoncé :</strong> Créez un formulaire permettant à l'utilisateur d'entrer sa date de naissance. Calculez et affichez son âge en années.</p>
+      </div>
+      <div class="exercise">
+        <h3>Exercice 3 - Vérification de la parité</h3>
+        <p><strong>Énoncé :</strong> Créez un formulaire où l'utilisateur saisit un nombre. Le script doit vérifier si ce nombre est pair ou impair et afficher le résultat.</p>
+      </div>
+    </section>
+
+    <a href="cours.php" class="back-link">Retour aux Cours</a>
+    <a href="test-php.php" class="back-link">Test</a>
+  </main>
+
+  <!-- Correction des exercices -->
+  <section class="content">
+    <h2>Corrections des Exercices</h2>
+    <section class="solution">
+      <h3>Correction Exercice 1</h3>
+      <p>Le formulaire et le code PHP pour cet exercice sont les suivants :</p>
+      <pre><code>&lt;form method="POST" action="exercice1.php"&gt;
+  Prénom: &lt;input type="text" name="prenom"&gt;&lt;br&gt;
+  Âge: &lt;input type="text" name="age"&gt;&lt;br&gt;
+  &lt;input type="submit" value="Envoyer"&gt;
+&lt;/form&gt;</code></pre>
+      <pre><code>&lt;?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $prenom = $_POST["prenom"];
+    $age = $_POST["age"];
+    echo "Bonjour, $prenom! Vous avez $age ans.";
+}
+?&gt;</code></pre>
+    </section>
+
+    <section class="solution">
+      <h3>Correction Exercice 2</h3>
+      <p>Voici la solution pour calculer l'âge :</p>
+      <pre><code>&lt;form method="POST" action="exercice2.php"&gt;
+  Date de naissance: &lt;input type="date" name="dob"&gt;&lt;br&gt;
+  &lt;input type="submit" value="Calculer l'âge"&gt;
+&lt;/form&gt;</code></pre>
+      <pre><code>&lt;?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $dob = $_POST["dob"];
+    $age = date_diff(date_create($dob), date_create('today'))->y;
+    echo "Vous avez $age ans.";
+}
+?&gt;</code></pre>
+    </section>
+
+    <section class="solution">
+      <h3>Correction Exercice 3</h3>
+      <p>Voici la solution pour vérifier la parité :</p>
+      <pre><code>&lt;form method="POST" action="exercice3.php"&gt;
+  Nombre: &lt;input type="text" name="nombre"&gt;&lt;br&gt;
+  &lt;input type="submit" value="Vérifier"&gt;
+&lt;/form&gt;</code></pre>
+      <pre><code>&lt;?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nombre = $_POST["nombre"];
+    if ($nombre % 2 == 0) {
+        echo "$nombre est un nombre pair.";
+    } else {
+        echo "$nombre est un nombre impair.";
+    }
+}
+?&gt;</code></pre>
+    </section>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 L'Ochy Academy. Tous droits réservés. | <a href="mailto:info@mstudy.com">Contactez-nous</a></p>
+  </footer>
+
+  <script>
+    function runCode() {
+      const codeInput = document.getElementById('code-input').value;
+      const codeOutput = document.getElementById('code-output');
+      const iframeDocument = codeOutput.contentWindow.document;
+
+      // Écrire le code dans l'iframe
+      iframeDocument.open();
+      iframeDocument.write(`
+        <!DOCTYPE html>
+        <html lang="fr">
+        <head>
+          <style>
+            body { font-family: Arial, sans-serif; padding: 20px; }
+          </style>
+        </head>
+        <body>
+          <?php
+          ${codeInput}
+          ?>
+        </body>
+        </html>
+      `);
+      iframeDocument.close();
+    }
+
+    // Exécuter le code par défaut au chargement de la page
+    window.onload = runCode;
+  </script>
+</body>
+</html>
