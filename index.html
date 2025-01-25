@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+how to make this page match phones screen:<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    /* CSS Variables for Reusability */
     :root {
       --primary-color: #4a90e2;
       --secondary-color: #ff6f61;
@@ -428,8 +427,25 @@
       nav {
         width: 100%;
         flex-direction: column;
-        gap: 15px;
+        gap: 10px;
         margin-top: 10px;
+      }
+
+      .hero {
+        padding: 80px 20px;
+      }
+
+      .hero h2 {
+        font-size: 1.5rem;
+      }
+
+      .hero p {
+        font-size: 0.9rem;
+      }
+
+      .hero .cta {
+        font-size: 0.9rem;
+        padding: 8px 16px;
       }
 
       .footer-content {
@@ -443,6 +459,33 @@
 
       .social-icons {
         justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .navbar h1 {
+        font-size: 1.2rem;
+      }
+
+      nav a {
+        font-size: 0.9rem;
+      }
+
+      .hero {
+        padding: 60px 20px;
+      }
+
+      .hero h2 {
+        font-size: 1.2rem;
+      }
+
+      .hero p {
+        font-size: 0.8rem;
+      }
+
+      .hero .cta {
+        font-size: 0.8rem;
+        padding: 6px 12px;
       }
     }
 
@@ -464,13 +507,13 @@
     <div class="navbar">
       <h1><span>L'</span>Ochy Academy</h1>
       <nav>
-        <a href="index.php" class="active">Accueil</a>
-        <a href="cours.php">Cours</a>
-        <a href="quiz.php">Quiz</a>
-        <a href="cour.php">PDF Courses/Exercices</a>
-        <a href="blog.php">Blog</a>
-        <a href="formation.php">Formation</a>
-        <a href="community.php">À propos</a>
+        <a href="index.html" class="active">Accueil</a>
+        <a href="cours.html">Cours</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="cour.html">PDF Courses/Exercices</a>
+        <a href="blog.html">Blog</a>
+        <a href="formation.html">Formation</a>
+        <a href="community.html">À propos</a>
       </nav>
     </div>
   </header>
@@ -595,11 +638,11 @@
           response.data.forEach(comment => {
             const commentElement = document.createElement('div');
             commentElement.classList.add('comment');
-            commentElement.innerHTML = `
+            commentElement.innerHTML = 
               <h4>${comment.name}</h4>
               <p>${comment.comment}</p>
               <small>${new Date(comment.created_at).toLocaleString()}</small>
-            `;
+            ;
             commentsContainer.appendChild(commentElement);
           });
         })
