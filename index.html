@@ -41,50 +41,74 @@
       color: inherit;
     }
 
-    /* Navbar */
+  /* Default Header Styles */
+  header {
+    background-color: var(--light-text);
+    box-shadow: var(--shadow);
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .navbar h1 {
+    font-size: 2rem;
+    color: var(--primary-color);
+  }
+
+  .navbar h1 span {
+    color: var(--secondary-color);
+  }
+
+  nav {
+    display: flex;
+    gap: 25px;
+  }
+
+  nav a {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    transition: var(--transition);
+  }
+
+  nav a:hover,
+  nav a.active {
+    color: var(--secondary-color);
+    transform: translateY(-2px);
+  }
+
+  /* Mobile-specific Header Styles */
+  @media (max-width: 768px) {
     header {
-      background-color: var(--light-text);
-      box-shadow: var(--shadow);
-      padding: 20px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      padding: 15px; /* Less padding for mobile */
     }
 
     .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .navbar h1 {
-      font-size: 2rem;
-      color: var(--primary-color);
-    }
-
-    .navbar h1 span {
-      color: var(--secondary-color);
+      flex-direction: column; /* Stack items vertically */
+      align-items: flex-start;
     }
 
     nav {
-      display: flex;
-      gap: 25px;
+      width: 100%;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 10px;
     }
 
     nav a {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--text-color);
-      transition: var(--transition);
+      font-size: 1rem; /* Slightly smaller text on mobile */
+      text-align: center; /* Center align links */
     }
-
-    nav a:hover,
-    nav a.active {
-      color: var(--secondary-color);
-      transform: translateY(-2px);
-    }
+  }
 
     /* Hero Section */
     .hero {
